@@ -5,15 +5,15 @@ class MusicAlbum(models.Model):
     _description = 'Music Album'
 
     name = fields.Char(
-        string='Name'
+        string='Name',
         required=True
     )
     artist = fields.Char(
-        string='Artist'
+        string='Artist',
         required=True
     )
     release_date = fields.Date(
-        string='Release Date'
+        string='Release Date',
         required=True
     )
     genre = fields.Selection(

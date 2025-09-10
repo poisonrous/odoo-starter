@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+<record id="view_music_album_tree" model="ir.ui.view">
+    <field name="name">music.album.tree</field>
+    <field name="model">music_album</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="artist"/>
+        </tree>
+    </field>
+</record>
+
+<record id="view_music_album_form" model="ir.ui.view">
+    <field name="name">music.album.form</field>
+    <field name="model">music_album</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="artist"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+<record id="music_album_action" model="ir.actions.act_window">
+    <field name="name">Album action</field>
+    <field name="res_model">music_album</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="view_music_album_tree"/>
+</record>
+</odoo>
