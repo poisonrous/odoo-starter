@@ -1,0 +1,8 @@
+odoo.log
+*.pyc
+__pycache__/
+*.swp
+*.bak
+*.idea/
+*.vscode/
+odoo-venv/
