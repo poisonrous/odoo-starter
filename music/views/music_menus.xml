@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
 <menuitem id="music_menu_root" name="Music">
-    <menuitem id="music_first_level_menu" name="First Level">
+    <menuitem id="music_first_level_menu" name="Library">
         <menuitem id="music_album_menu_action" action="music_album_action"/>
     </menuitem>
 </menuitem>

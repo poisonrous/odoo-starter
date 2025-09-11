@@ -14,10 +14,26 @@ class MusicAlbum(models.Model):
     )
     release_date = fields.Date(
         string='Release Date',
-        required=True
+        copy=False
     )
     genre = fields.Selection(
         string='Genre',
-        selection=[('pop','Pop'),('rock','Rock'),('country','Country')]
+        selection=[('pop','Pop'),('rock','Rock'),('country','Country')],
+        default='pop'
     )
     
+    length = fields.Float(
+        string='Length',
+        copy=False
+    )
+
+    active = fields.Boolean(
+        default=True
+    )
+
+    status = fields.Selection(
+        required=True,
+        selection=[('coming','Coming'),('new','New'),('listened','Listened')],
+        default='coming',
+        copy=False
+    )

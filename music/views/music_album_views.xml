@@ -7,6 +7,8 @@
         <tree>
             <field name="name"/>
             <field name="artist"/>
+            <field name="genre"/>
+            <field name="release_date"/>
         </tree>
     </field>
 </record>
@@ -20,13 +22,16 @@
                 <group>
                     <field name="name"/>
                     <field name="artist"/>
+                    <field name="genre"/>
+                    <field name="release_date"/>
+                    <field name="length" readonly="1"/>
                 </group>
             </sheet>
         </form>
     </field>
 </record>
 <record id="music_album_action" model="ir.actions.act_window">
-    <field name="name">Album action</field>
+    <field name="name">Albums</field>
     <field name="res_model">music_album</field>
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="view_music_album_tree"/>
