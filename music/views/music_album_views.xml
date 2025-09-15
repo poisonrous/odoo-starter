@@ -1,5 +1,22 @@
 <?xml version="1.0"?>
 <odoo>
+
+<record id="view_music_album_search" model="ir.ui.view">
+    <field name="name">music.album.search</field>
+    <field name="model">music_album</field>
+    <field name="arch" type="xml">
+        <search string="Albums">
+            <field name="name"/>
+            <field name="artist"/>
+            <group expand="0" string="Group By">
+                <filter name="genre" context="{'group_by':'genre'}"/>
+                <filter name="artist" context="{'group_by':'artist'}"/>
+                <filter string="Not Listened" name="status" domain="['|',('status', '=', 'coming'),('status', '=', 'new')]"/>
+            </group>
+        </search>
+    </field>
+</record>
+
 <record id="view_music_album_tree" model="ir.ui.view">
     <field name="name">music.album.tree</field>
     <field name="model">music_album</field>
@@ -24,16 +41,24 @@
                     <field name="artist"/>
                     <field name="genre"/>
                     <field name="release_date"/>
-                    <field name="length" readonly="1"/>
+                    <field name="length" widget="float_time" readonly="1"/>
+                    <field name="status"/>
                 </group>
+                <notebook>
+                  <page string="Tracks">
+                    <field name="tracks"/>
+                  </page>
+                </notebook>
             </sheet>
         </form>
     </field>
 </record>
+
 <record id="music_album_action" model="ir.actions.act_window">
     <field name="name">Albums</field>
     <field name="res_model">music_album</field>
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="view_music_album_tree"/>
 </record>
+
 </odoo>

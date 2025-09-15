@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 class MusicAlbum(models.Model):
     _name = 'music_album'
@@ -8,21 +8,30 @@ class MusicAlbum(models.Model):
         string='Name',
         required=True
     )
-    artist = fields.Char(
+
+    artist = fields.Many2one(
+        'music_artist',
         string='Artist',
         required=True
     )
+
+    tracks = fields.Many2many(
+        'music_track',
+        string='Tracks'
+    )
+
     release_date = fields.Date(
         string='Release Date',
         copy=False
     )
-    genre = fields.Selection(
-        string='Genre',
-        selection=[('pop','Pop'),('rock','Rock'),('country','Country')],
-        default='pop'
+    
+    genre = fields.Many2one(
+        'music_genre',
+        string='Genre'
     )
     
     length = fields.Float(
+        compute='_compute_length',
         string='Length',
         copy=False
     )
@@ -37,3 +46,9 @@ class MusicAlbum(models.Model):
         default='coming',
         copy=False
     )
+
+    @api.depends("tracks")
+    def _compute_length(self):
+        for record in self:
+            for track in self.tracks:
+                record.length = record.length + track.length

@@ -1,8 +1,13 @@
 <?xml version="1.0"?>
 <odoo>
 <menuitem id="music_menu_root" name="Music">
-    <menuitem id="music_first_level_menu" name="Library">
+    <menuitem id="music_library_menu" name="Library">
         <menuitem id="music_album_menu_action" action="music_album_action"/>
+    </menuitem>
+    <menuitem id="music_items_menu" name="Items">
+        <menuitem id="music_track_menu_action" action="music_track_action"/>
+        <menuitem id="music_artist_menu_action" action="music_artist_action"/>
+        <menuitem id="music_genre_menu_action" action="music_genre_action"/>
     </menuitem>
 </menuitem>
 </odoo>

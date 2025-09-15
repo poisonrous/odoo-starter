@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<odoo>
+
+<!--<record id="view_music_track_search" model="ir.ui.view">
+    <field name="name">music.track.search</field>
+    <field name="model">music_track</field>
+    <field name="arch" type="xml">
+        <search string="Tracks">
+            <field name="name"/>
+            <field name="artist"/>
+            <group expand="0" string="Group By">
+                <filter name="artist" context="{'group_by':'artist'}"/>
+                <filter string="Clean" name="clean" domain="[('explicit', '=', 'False')]"/>
+                <filter string="Explicit" name="explicit" domain="[('explicit', '=', 'True')]"/>
+            </group>
+        </search>
+    </field>
+</record>-->
+
+<record id="view_music_track_tree" model="ir.ui.view">
+    <field name="name">music.track.tree</field>
+    <field name="model">music_track</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="artist"/>
+            <field name="length" widget="float_time"/>
+            <field name="explicit"/>
+        </tree>
+    </field>
+</record>
+
+<record id="view_music_track_form" model="ir.ui.view">
+    <field name="name">music.track.form</field>
+    <field name="model">music_track</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="name"/>
+                    <field name="artist" widget='many2many_tags'/>
+                    <field name="length" widget="float_time"/>
+                    <field name="explicit"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="music_track_action" model="ir.actions.act_window">
+    <field name="name">Tracks</field>
+    <field name="res_model">music_track</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="view_music_track_tree"/>
+</record>
+
+</odoo>
