@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from datetime import datetime, time
 
 class MusicAlbum(models.Model):
     _name = 'music_album'
@@ -40,15 +41,41 @@ class MusicAlbum(models.Model):
         default=True
     )
 
-    status = fields.Selection(
-        required=True,
-        selection=[('coming','Coming'),('new','New'),('listened','Listened')],
-        default='coming',
-        copy=False
+    listened = fields.Boolean(
+        default=False
     )
 
-    @api.depends("tracks")
+    status = fields.Selection(
+        compute='_compute_status',
+        inverse='_inverse_status',
+        selection=[('coming','Coming'),('new','New'),('listened','Listened')],
+        copy=False,
+        default='coming'
+    )
+
+    @api.depends('tracks')
     def _compute_length(self):
         for record in self:
+            record.length = 0.0
             for track in self.tracks:
                 record.length = record.length + track.length
+
+    @api.depends('listened', 'release_date')
+    def _compute_status(self):
+        for record in self:
+            if record.listened:
+                record.status='listened'
+            elif datetime.now() > datetime.combine(record.release_date, time(0,0)):
+                record.status='new'
+            else:
+                record.status='coming'
+    def _inverse_status(self):
+        for record in self:
+            if record.status=='listened':
+                record.listened=True
+            else:
+                record.listened=False
+
+    @api.onchange('artist')
+    def _onchange_artist(self):
+        self.genre=(self.artist.genre)

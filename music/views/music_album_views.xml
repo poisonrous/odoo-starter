@@ -11,7 +11,7 @@
             <group expand="0" string="Group By">
                 <filter name="genre" context="{'group_by':'genre'}"/>
                 <filter name="artist" context="{'group_by':'artist'}"/>
-                <filter string="Not Listened" name="status" domain="['|',('status', '=', 'coming'),('status', '=', 'new')]"/>
+                <filter string="Not Listened" name="listened"/>
             </group>
         </search>
     </field>
@@ -35,6 +35,9 @@
     <field name="model">music_album</field>
     <field name="arch" type="xml">
         <form>
+            <header>
+                <field name="status" widget="statusbar"  options="{'clickable':1}"/>
+            </header>
             <sheet>
                 <group>
                     <field name="name"/>
