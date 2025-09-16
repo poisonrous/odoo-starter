@@ -3,3 +3,4 @@ music.access_music_album,access_music_album,music.model_music_album,base.group_u
 music.access_music_track,access_music_track,music.model_music_track,base.group_user,1,1,1,1
 music.access_music_artist,access_music_artist,music.model_music_artist,base.group_user,1,1,1,1
 music.access_music_genre,access_music_genre,music.model_music_genre,base.group_user,1,1,1,1
+music.access_music_playlist,access_music_playlist,music.model_music_playlist,base.group_user,1,1,1,1

@@ -3,6 +3,7 @@
 <menuitem id="music_menu_root" name="Music">
     <menuitem id="music_library_menu" name="Library">
         <menuitem id="music_album_menu_action" action="music_album_action"/>
+        <menuitem id="music_playlist_menu_action" action="music_playlist_action"/>
     </menuitem>
     <menuitem id="music_items_menu" name="Items">
         <menuitem id="music_track_menu_action" action="music_track_action"/>

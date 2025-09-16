@@ -13,6 +13,7 @@
         'views/music_track_views.xml',
         'views/music_artist_views.xml',
         'views/music_genre_views.xml',
+        'views/music_playlist_views.xml',
         'views/music_menus.xml'
     ]
 }

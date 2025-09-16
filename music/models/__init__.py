@@ -1,1 +1,1 @@
-from . import music_album, music_track, music_artist, music_genre
+from . import music_album, music_track, music_artist, music_genre, music_playlist
