@@ -27,7 +27,12 @@
                 </group>
                 <notebook>
                   <page string="Tracks">
-                    <field name="tracks"/>
+                    <field name="track_link_ids">
+                        <tree editable="bottom">
+                            <field name="sequence"/>
+                            <field name="track_id"/>
+                        </tree>
+                    </field>
                   </page>
                 </notebook>
             </sheet>

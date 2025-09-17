@@ -16,8 +16,9 @@ class MusicAlbum(models.Model):
         required=True
     )
 
-    tracks = fields.Many2many(
-        'music_track',
+    track_link_ids = fields.One2many(
+        'music_track_link',
+        'album_id',
         string='Tracks'
     )
 
@@ -53,12 +54,11 @@ class MusicAlbum(models.Model):
         default='coming'
     )
 
-    @api.depends('tracks')
+    @api.depends('track_link_ids.track_id.length')
     def _compute_length(self):
         for record in self:
             record.length = 0.0
-            for track in self.tracks:
-                record.length = record.length + track.length
+            record.length = sum(link.track_id.length for link in record.track_link_ids if link.track_id)
 
     @api.depends('listened', 'release_date')
     def _compute_status(self):
