@@ -28,3 +28,7 @@ class MusicTrack(models.Model):
     explicit = fields.Boolean(
         default=False
     )
+
+    _sql_constraints = [
+        ('positive_length', 'CHECK(length > 0)', 'Track length should be a positive number.')
+    ]

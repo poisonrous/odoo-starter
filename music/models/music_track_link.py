@@ -7,7 +7,7 @@ class MusicTrackLink(models.Model):
 
     track_id = fields.Many2one(
         'music_track',
-        string='Track',
+        string='',
         required=True,
         ondelete='cascade'
     )
@@ -25,21 +25,19 @@ class MusicTrackLink(models.Model):
     )
 
     sequence = fields.Integer(
-        string='..'
+        string=''
     )
 
-"""    @api.model
-    def create(self, vals_list):
-        new_vals_list = []
-        for vals in vals_list:
-            if not isinstance(vals, dict):
-                continue
+    @api.model
+    def create(self, vals):
+        if 'sequence' not in vals or vals['sequence'] == 0:
             domain = []
             if vals.get('playlist_id'):
                 domain = [('playlist_id', '=', vals['playlist_id'])]
             elif vals.get('album_id'):
                 domain = [('album_id', '=', vals['album_id'])]
+
             last = self.search(domain, order='sequence desc', limit=1)
             vals['sequence'] = last.sequence + 1 if last else 1
-            new_vals_list.append(vals)
-        return super().create(new_vals_list)"""
+
+        return super(MusicTrackLink, self).create(vals)

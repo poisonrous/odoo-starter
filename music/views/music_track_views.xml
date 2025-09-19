@@ -23,7 +23,7 @@
     <field name="arch" type="xml">
         <tree>
             <field name="name"/>
-            <field name="artist"/>
+            <field name="artist" widget="many2many_tags"/>
             <field name="length" widget="float_time"/>
             <field name="explicit"/>
         </tree>
