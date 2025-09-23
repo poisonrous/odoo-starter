@@ -1,4 +1,5 @@
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 class MusicTrackLink(models.Model):
     _name = 'music_track_link'
@@ -41,3 +42,10 @@ class MusicTrackLink(models.Model):
             vals['sequence'] = last.sequence + 1 if last else 1
 
         return super(MusicTrackLink, self).create(vals)
+
+    @api.constrains('album_id', 'track_id')
+    def _check_duplicate(self):
+        for record in self:
+            if self.search([('album_id', '=', record.album_id.id),
+            ('track_id', '=', record.track_id.id), ('id', '!=', record.id)]):
+                raise ValidationError("You can't have a song twice in an album.")
