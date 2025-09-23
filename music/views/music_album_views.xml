@@ -24,7 +24,7 @@
         <tree>
             <field name="name"/>
             <field name="artist"/>
-            <field name="genre"/>
+            <field name="genre" options="{'no_create':1}" />
             <field name="release_date"/>
         </tree>
     </field>
@@ -36,7 +36,8 @@
     <field name="arch" type="xml">
         <form>
             <header>
-                <field name="status" widget="statusbar"  options="{'clickable':1}"/>
+                <button name="action_listened" type="object" string="Listened" attrs="{'invisible': [('status', '!=', 'new')]}"/>
+                <field name="status" widget="statusbar"  options="{'clickable':0}"/>
             </header>
             <sheet>
                 <group>

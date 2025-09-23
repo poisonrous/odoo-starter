@@ -61,6 +61,10 @@ class MusicAlbum(models.Model):
             record.length = sum(link.track_id.length for link in record.track_link_ids if link.track_id)
 
     @api.depends('listened', 'release_date')
+    def action_listened(self):
+        for record in self:
+            record.listened=True
+
     def _compute_status(self):
         for record in self:
             if record.listened:
