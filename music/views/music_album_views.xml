@@ -26,6 +26,7 @@
             <field name="artist"/>
             <field name="genre" options="{'no_create':1}" />
             <field name="release_date"/>
+            <field name="length" widget="float_time" optional="hide"/>
         </tree>
     </field>
 </record>
