@@ -21,12 +21,13 @@
     <field name="name">music.album.tree</field>
     <field name="model">music_album</field>
     <field name="arch" type="xml">
-        <tree>
+        <tree decoration-success="status=='new'" decoration-muted="status=='coming'" decoration-bf="status=='listened'">
             <field name="name"/>
             <field name="artist"/>
             <field name="genre" options="{'no_create':1}" />
             <field name="release_date"/>
             <field name="length" widget="float_time" optional="hide"/>
+            <field name="status" optional="hide"/>
         </tree>
     </field>
 </record>
