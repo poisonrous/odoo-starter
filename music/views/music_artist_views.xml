@@ -33,6 +33,9 @@
                     <field name="name"/>
                     <field name="genre"/>
                 </group>
+                <tree>
+                    <field name="album_ids"/>
+                </tree>
             </sheet>
         </form>
     </field>
