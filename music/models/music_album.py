@@ -51,7 +51,8 @@ class MusicAlbum(models.Model):
         inverse='_inverse_status',
         selection=[('coming','Coming'),('new','New'),('listened','Listened')],
         copy=False,
-        default='coming'
+        default='coming',
+        store=True
     )
 
     @api.depends('track_link_ids.track_id.length')

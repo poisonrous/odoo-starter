@@ -23,6 +23,11 @@ class MusicPlaylist(models.Model):
         copy=False
     )
 
+    count = fields.Integer(
+        compute='_compute_count',
+        string='Tracks'
+    )
+
     active = fields.Boolean(
         default=True
     )
@@ -32,6 +37,10 @@ class MusicPlaylist(models.Model):
         for record in self:
             record.length = 0.0
             record.length = sum(link.track_id.length for link in record.track_link_ids if link.track_id)
+
+    def _compute_count(self):
+        for record in self:
+            record.count = len(record.track_link_ids)
 
     def action_randomize(self):
         for record in self:

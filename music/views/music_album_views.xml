@@ -9,8 +9,9 @@
             <field name="name"/>
             <field name="artist"/>
             <group expand="0" string="Extended Filters">
-                <filter string="New" name="new"/>
-                <filter string="Not Listened" name="listened" domain="[('listened','=', 'False')]"/>
+                <filter string="New" name="new" domain="[('status','=', 'new')]"/>
+                <filter string="Listened" name="listened" domain="[('listened','=', 'True')]"/>
+                <filter string="Not Listened" name="not_listened" domain="[('listened','=', 'False')]"/>
             </group>
             <group expand="1" string="Group By">
                 <filter name="genre" context="{'group_by':'genre'}"/>
@@ -72,7 +73,7 @@
     <field name="res_model">music_album</field>
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="view_music_album_tree"/>
-    <field name="context">{'search_default_listened': True}</field>
+    <field name="context">{'search_default_new': True}</field>
 </record>
 
 </odoo>
