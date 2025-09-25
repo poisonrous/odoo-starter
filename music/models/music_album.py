@@ -66,6 +66,7 @@ class MusicAlbum(models.Model):
         for record in self:
             record.listened=True
 
+    @api.depends('listened', 'release_date')
     def _compute_status(self):
         for record in self:
             if record.listened:
