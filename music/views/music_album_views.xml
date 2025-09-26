@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <odoo>
 
+<record id="action_album_ids" model="ir.actions.act_window">
+    <field name="name">Albums</field>
+    <field name="res_model">music_album</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[('artist', '=', active_id)]</field>
+</record>
+
 <record id="view_music_album_search" model="ir.ui.view">
     <field name="name">music.album.search</field>
     <field name="model">music_album</field>
@@ -46,6 +53,7 @@
                 <field name="status" widget="statusbar"  options="{'clickable':0}"/>
             </header>
             <sheet>
+                <button name="%(action_album_ids)d" type="action" class="oe_stat_button" icon="fa-music"/>
                 <group>
                     <field name="name"/>
                     <field name="artist"/>
