@@ -1,7 +1,7 @@
 from odoo import fields, models
 
 class MusicArtist(models.Model):
-    _name = 'music_artist'
+    _name = 'music.artist'
     _description = 'Artist'
 
     name = fields.Char(
@@ -9,8 +9,8 @@ class MusicArtist(models.Model):
         required=True
     )
 
-    genre = fields.Many2one(
-        'music_genre',
+    genre_id = fields.Many2one(
+        'music.genre',
         string='Genre'
     )
 
@@ -19,7 +19,7 @@ class MusicArtist(models.Model):
     )
 
     album_ids = fields.One2many(
-        'music_album', 'artist'
+        'music.album', 'artist_id'
     )
 
 

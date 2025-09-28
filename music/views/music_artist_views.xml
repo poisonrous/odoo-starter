@@ -3,11 +3,11 @@
 
 <record id="view_music_artist_search" model="ir.ui.view">
     <field name="name">music.artist.search</field>
-    <field name="model">music_artist</field>
+    <field name="model">music.artist</field>
     <field name="arch" type="xml">
         <search string="Artists">
             <group expand="0" string="Group By">
-                <filter name="genre" context="{'group_by':'genre'}"/>
+                <filter name="genre" context="{'group_by':'genre_id'}"/>
             </group>
         </search>
     </field>
@@ -15,7 +15,7 @@
 
 <record id="view_music_artist_tree" model="ir.ui.view">
     <field name="name">music.artist.tree</field>
-    <field name="model">music_artist</field>
+    <field name="model">music.artist</field>
     <field name="arch" type="xml">
         <tree>
             <field name="name"/>
@@ -25,17 +25,14 @@
 
 <record id="view_music_artist_form" model="ir.ui.view">
     <field name="name">music.artist.form</field>
-    <field name="model">music_artist</field>
+    <field name="model">music.artist</field>
     <field name="arch" type="xml">
         <form>
             <sheet>
                 <group>
                     <field name="name"/>
-                    <field name="genre"/>
+                    <field name="genre_id"/>
                 </group>
-                <tree>
-                    <field name="album_ids"/>
-                </tree>
             </sheet>
         </form>
     </field>
@@ -43,7 +40,7 @@
 
 <record id="music_artist_action" model="ir.actions.act_window">
     <field name="name">Artists</field>
-    <field name="res_model">music_artist</field>
+    <field name="res_model">music.artist</field>
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="view_music_artist_tree"/>
 </record>

@@ -2,25 +2,25 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 class MusicTrackLink(models.Model):
-    _name = 'music_track_link'
+    _name = 'music.track.link'
     _description = 'Track Link (Playlist or Album)'
     _order = 'sequence'
 
     track_id = fields.Many2one(
-        'music_track',
+        'music.track',
         string='',
         required=True,
         ondelete='cascade'
     )
 
     playlist_id = fields.Many2one(
-        'music_playlist',
+        'music.playlist',
         string='Playlist',
         ondelete='cascade'
     )
 
     album_id = fields.Many2one(
-        'music_album',
+        'music.album',
         string='Album',
         ondelete='cascade'
     )

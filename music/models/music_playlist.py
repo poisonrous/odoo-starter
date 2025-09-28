@@ -3,7 +3,7 @@ from datetime import datetime, time
 import random
 
 class MusicPlaylist(models.Model):
-    _name = 'music_playlist'
+    _name = 'music.playlist'
     _description = 'Music Playlist'
 
     name = fields.Char(
@@ -12,7 +12,7 @@ class MusicPlaylist(models.Model):
     )
 
     track_link_ids = fields.One2many(
-        'music_track_link',
+        'music.track.link',
         'playlist_id',
         string='Tracks'
     )

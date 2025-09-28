@@ -1,7 +1,7 @@
 from odoo import fields, models
 
 class MusicGenre(models.Model):
-    _name = 'music_genre'
+    _name = 'music.genre'
     _description = 'Genre'
 
     name = fields.Char(

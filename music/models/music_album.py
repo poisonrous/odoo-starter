@@ -2,7 +2,7 @@ from odoo import api, fields, models
 from datetime import datetime, time
 
 class MusicAlbum(models.Model):
-    _name = 'music_album'
+    _name = 'music.album'
     _description = 'Music Album'
 
     name = fields.Char(
@@ -10,21 +10,21 @@ class MusicAlbum(models.Model):
         required=True
     )
 
-    artist = fields.Many2one(
-        'music_artist',
+    artist_id = fields.Many2one(
+        'music.artist',
         string='Artist',
         required=True
     )
 
     artist_album_count = fields.Integer(
-        related='artist.album_count',
+        related='artist_id.album_count',
         string='Artist Album Count',
         store=True,
         readonly=True
     )
 
     track_link_ids = fields.One2many(
-        'music_track_link',
+        'music.track.link',
         'album_id',
         string='Tracks'
     )
@@ -34,8 +34,8 @@ class MusicAlbum(models.Model):
         copy=False
     )
     
-    genre = fields.Many2one(
-        'music_genre',
+    genre_id = fields.Many2one(
+        'music.genre',
         string='Genre'
     )
     
@@ -89,6 +89,6 @@ class MusicAlbum(models.Model):
             else:
                 record.listened=False
 
-    @api.onchange('artist')
+    @api.onchange('artist_id')
     def _onchange_artist(self):
-        self.genre=(self.artist.genre)
+        self.genre_id=(self.artist_id.genre_id)

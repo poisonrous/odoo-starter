@@ -3,7 +3,7 @@
 
 <record id="view_music_playlist_tree" model="ir.ui.view">
     <field name="name">music.playlist.tree</field>
-    <field name="model">music_playlist</field>
+    <field name="model">music.playlist</field>
     <field name="arch" type="xml">
         <tree>
             <field name="name"/>
@@ -15,7 +15,7 @@
 
 <record id="view_music_playlist_form" model="ir.ui.view">
     <field name="name">music.playlist.form</field>
-    <field name="model">music_playlist</field>
+    <field name="model">music.playlist</field>
     <field name="arch" type="xml">
         <form>
             <header>
@@ -42,7 +42,7 @@
 
 <record id="music_playlist_action" model="ir.actions.act_window">
     <field name="name">Playlists</field>
-    <field name="res_model">music_playlist</field>
+    <field name="res_model">music.playlist</field>
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="view_music_playlist_tree"/>
 </record>

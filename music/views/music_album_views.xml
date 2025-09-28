@@ -3,26 +3,26 @@
 
 <record id="action_album_ids" model="ir.actions.act_window">
     <field name="name">Albums</field>
-    <field name="res_model">music_album</field>
+    <field name="res_model">music.album</field>
     <field name="view_mode">tree,form</field>
-    <field name="domain">[('artist', '=', active_id)]</field>
+    <field name="domain">[('artist_id', '=', active_id)]</field>
 </record>
 
 <record id="view_music_album_search" model="ir.ui.view">
     <field name="name">music.album.search</field>
-    <field name="model">music_album</field>
+    <field name="model">music.album</field>
     <field name="arch" type="xml">
         <search string="Albums">
             <field name="name"/>
-            <field name="artist"/>
+            <field name="artist_id"/>
             <group expand="0" string="Extended Filters">
                 <filter string="New" name="new" domain="[('status','=', 'new')]"/>
                 <filter string="Listened" name="listened" domain="[('listened','=', 'True')]"/>
                 <filter string="Not Listened" name="not_listened" domain="[('listened','=', 'False')]"/>
             </group>
             <group expand="1" string="Group By">
-                <filter name="genre" context="{'group_by':'genre'}"/>
-                <filter name="artist" context="{'group_by':'artist'}"/>
+                <filter name="genre_id" context="{'group_by':'genre_id'}"/>
+                <filter name="artist_id" context="{'group_by':'artist_id'}"/>
             </group>
         </search>
     </field>
@@ -30,12 +30,12 @@
 
 <record id="view_music_album_tree" model="ir.ui.view">
     <field name="name">music.album.tree</field>
-    <field name="model">music_album</field>
+    <field name="model">music.album</field>
     <field name="arch" type="xml">
         <tree decoration-success="status=='new'" decoration-muted="status=='coming'" decoration-bf="status=='listened'">
             <field name="name"/>
-            <field name="artist"/>
-            <field name="genre" options="{'no_create':1}" />
+            <field name="artist_id"/>
+            <field name="genre_id" options="{'no_create':1}" />
             <field name="release_date"/>
             <field name="length" widget="float_time" optional="hide"/>
             <field name="status" optional="hide"/>
@@ -45,7 +45,7 @@
 
 <record id="view_music_album_form" model="ir.ui.view">
     <field name="name">music.album.form</field>
-    <field name="model">music_album</field>
+    <field name="model">music.album</field>
     <field name="arch" type="xml">
         <form>
             <header>
@@ -60,8 +60,8 @@
                 </div>
                 <group>
                     <field name="name"/>
-                    <field name="artist"/>
-                    <field name="genre"/>
+                    <field name="artist_id"/>
+                    <field name="genre_id"/>
                     <field name="release_date"/>
                     <field name="length" widget="float_time" readonly="1"/>
                 </group>
@@ -81,7 +81,7 @@
 
 <record id="music_album_action" model="ir.actions.act_window">
     <field name="name">Albums</field>
-    <field name="res_model">music_album</field>
+    <field name="res_model">music.album</field>
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="view_music_album_tree"/>
     <field name="context">{'search_default_new': True}</field>
