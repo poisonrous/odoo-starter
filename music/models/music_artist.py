@@ -30,4 +30,4 @@ class MusicArtist(models.Model):
 
     def _compute_count(self):
         for record in self:
-            record.count = len(record.album_ids)
+            record.album_count = len(record.album_ids)

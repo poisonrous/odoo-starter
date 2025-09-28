@@ -53,14 +53,17 @@
                 <field name="status" widget="statusbar"  options="{'clickable':0}"/>
             </header>
             <sheet>
-                <button name="%(action_album_ids)d" type="action" class="oe_stat_button" icon="fa-music"/>
+                <div class="o-form-buttonbox oe_button_box position-relative text-end o_full" position="inside">
+                    <button name="%(action_album_ids)d" type="action" class="oe_stat_button" icon="fa-music">
+                            <field name="artist_album_count" widget="statinfo" string="Albums" class="o_field_widget o_stat_info"/>
+                    </button>
+                </div>
                 <group>
                     <field name="name"/>
                     <field name="artist"/>
                     <field name="genre"/>
                     <field name="release_date"/>
                     <field name="length" widget="float_time" readonly="1"/>
-                    <field name="status"/>
                 </group>
                 <notebook>
                   <page string="Tracks">

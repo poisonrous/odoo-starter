@@ -16,6 +16,13 @@ class MusicAlbum(models.Model):
         required=True
     )
 
+    artist_album_count = fields.Integer(
+        related='artist.album_count',
+        string='Artist Album Count',
+        store=True,
+        readonly=True
+    )
+
     track_link_ids = fields.One2many(
         'music_track_link',
         'album_id',
