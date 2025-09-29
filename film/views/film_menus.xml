@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<odoo>
+<menuitem id="film_menu_root" name="Film">
+    <menuitem id="film_library_menu" name="Library">
+        <menuitem id="film_menu_action" action="film_action"/>
+    </menuitem>
+    <menuitem id="film_items_menu" name="Items">
+        <menuitem id="film_genre_menu_action" action="film_genre_action"/>
+    </menuitem>
+</menuitem>
+</odoo>

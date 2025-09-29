@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_film_search" model="ir.ui.view">
+        <field name="name">film.search</field>
+        <field name="model">film</field>
+        <field name="arch" type="xml">
+            <search string="Albums">
+                <field name="name"/>
+                <group expand="0" string="Extended Filters">
+                    <filter string="New" name="new" domain="[('status','=', 'new')]"/>
+                </group>
+                <group expand="1" string="Group By">
+                    <filter name="genre_id" context="{'group_by':'genre_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_film_tree" model="ir.ui.view">
+        <field name="name">film.tree</field>
+        <field name="model">film</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="status=='new'" decoration-muted="status=='coming'">
+                <field name="name"/>
+                <field name="genre_id" options="{'no_create':1}" />
+                <field name="release_date"/>
+                <field name="length" widget="float_time" optional="hide"/>
+                <field name="status" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_film_form" model="ir.ui.view">
+        <field name="name">film.form</field>
+        <field name="model">film</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" options="{'clickable':0}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="genre_id"/>
+                        <field name="release_date"/>
+                        <field name="length" widget="float_time"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="film_action" model="ir.actions.act_window">
+        <field name="name">Films</field>
+        <field name="res_model">film</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_film_tree"/>
+        <field name="context">{'search_default_new': True}</field>
+    </record>
+
+</odoo>

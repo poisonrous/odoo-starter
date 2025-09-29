@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+film.access_film,access_film,film.model_film,base.group_user,1,1,1,1
+film.access_film_genre,access_film_genre,film.model_film_genre,base.group_user,1,1,1,1

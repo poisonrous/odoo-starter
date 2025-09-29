@@ -2,7 +2,7 @@
     'name': 'Music',
     'version': '1.0',
     'summary': 'idk, man, I like music',
-    'category': 'Music',
+    'category': 'Media',
     'description': '',
     'installable': True,
     'application': True,
