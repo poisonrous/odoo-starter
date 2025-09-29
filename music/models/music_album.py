@@ -1,9 +1,10 @@
 from odoo import api, fields, models
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 
 class MusicAlbum(models.Model):
     _name = 'music.album'
     _description = 'Music Album'
+    _inherit = ['media']
 
     name = fields.Char(
         string='Name',
@@ -28,11 +29,6 @@ class MusicAlbum(models.Model):
         'album_id',
         string='Tracks'
     )
-
-    release_date = fields.Date(
-        string='Release Date',
-        copy=False
-    )
     
     genre_id = fields.Many2one(
         'music.genre',
@@ -49,45 +45,11 @@ class MusicAlbum(models.Model):
         default=True
     )
 
-    listened = fields.Boolean(
-        default=False
-    )
-
-    status = fields.Selection(
-        compute='_compute_status',
-        inverse='_inverse_status',
-        selection=[('coming','Coming'),('new','New'),('listened','Listened')],
-        copy=False,
-        default='coming',
-        store=True
-    )
-
     @api.depends('track_link_ids.track_id.length')
     def _compute_length(self):
         for record in self:
             record.length = 0.0
             record.length = sum(link.track_id.length for link in record.track_link_ids if link.track_id)
-
-    @api.depends('listened', 'release_date')
-    def action_listened(self):
-        for record in self:
-            record.listened=True
-
-    @api.depends('listened', 'release_date')
-    def _compute_status(self):
-        for record in self:
-            if record.listened:
-                record.status='listened'
-            elif datetime.now() > datetime.combine(record.release_date, time(0,0)):
-                record.status='new'
-            else:
-                record.status='coming'
-    def _inverse_status(self):
-        for record in self:
-            if record.status=='listened':
-                record.listened=True
-            else:
-                record.listened=False
 
     @api.onchange('artist_id')
     def _onchange_artist(self):

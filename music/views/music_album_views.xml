@@ -17,8 +17,6 @@
             <field name="artist_id"/>
             <group expand="0" string="Extended Filters">
                 <filter string="New" name="new" domain="[('status','=', 'new')]"/>
-                <filter string="Listened" name="listened" domain="[('listened','=', 'True')]"/>
-                <filter string="Not Listened" name="not_listened" domain="[('listened','=', 'False')]"/>
             </group>
             <group expand="1" string="Group By">
                 <filter name="genre_id" context="{'group_by':'genre_id'}"/>
@@ -49,7 +47,7 @@
     <field name="arch" type="xml">
         <form>
             <header>
-                <button name="action_listened" type="object" string="Listened" attrs="{'invisible': [('status', '!=', 'new')]}"/>
+                <!--<button name="action_listened" type="object" string="Listened" attrs="{'invisible': [('status', '!=', 'new')]}"/>-->
                 <field name="status" widget="statusbar"  options="{'clickable':0}"/>
             </header>
             <sheet>

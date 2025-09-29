@@ -1,0 +1,12 @@
+{
+    'name': 'Media',
+    'version': '1.0',
+    'summary': 'parent module for media',
+    'category': 'Media',
+    'description': '',
+    'installable': True,
+    'application': True,
+    'depends': ['base', 'web'],
+    'data': [
+    ]
+}

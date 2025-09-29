@@ -6,7 +6,7 @@
     'description': '',
     'installable': True,
     'application': True,
-    'depends': ['base', 'web'],
+    'depends': ['base', 'web', 'media'],
     'data': [
         'security/ir.model.access.csv',
         'views/music_album_views.xml',
