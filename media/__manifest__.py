@@ -7,6 +7,7 @@
     'installable': True,
     'application': True,
     'depends': ['base', 'web'],
-    'data': [
+        'data': [
+        'views/media_genre_views.xml',
     ]
 }

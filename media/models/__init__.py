@@ -1,1 +1,1 @@
-from . import media
+from . import media, media_genre

@@ -1,14 +1,6 @@
-from odoo import fields, models
+from odoo import models
 
 class MusicGenre(models.Model):
     _name = 'music.genre'
     _description = 'Genre'
-
-    name = fields.Char(
-        string='Name',
-        required=True
-    )
-
-    active = fields.Boolean(
-        default=True
-    )
+    _inherit = ['media.genre']

@@ -1,35 +1,33 @@
 <?xml version="1.0"?>
 <odoo>
+    <data>
+        <record id="view_music_genre_tree" model="ir.ui.view">
+            <field name="name">music.genre.tree</field>
+            <field name="model">music.genre</field>
+            <field name="inherit_id" ref="media.view_media_genre_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="string">Music Genres</attribute>
+                </xpath>
+            </field>
+        </record>
 
-<record id="view_music_genre_tree" model="ir.ui.view">
-    <field name="name">music.genre.tree</field>
-    <field name="model">music.genre</field>
-    <field name="arch" type="xml">
-        <tree editable="bottom">
-            <field name="name"/>
-        </tree>
-    </field>
-</record>
+        <record id="view_music_genre_form" model="ir.ui.view">
+            <field name="name">music.genre.form</field>
+            <field name="model">music.genre</field>
+            <field name="inherit_id" ref="media.view_media_genre_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="string">Music Genres</attribute>
+                </xpath>
+            </field>
+        </record>
 
-<record id="view_music_genre_form" model="ir.ui.view">
-    <field name="name">music.genre.form</field>
-    <field name="model">music.genre</field>
-    <field name="arch" type="xml">
-        <form>
-            <sheet>
-                <group>
-                    <field name="name"/>
-                </group>
-            </sheet>
-        </form>
-    </field>
-</record>
-
-<record id="music_genre_action" model="ir.actions.act_window">
-    <field name="name">Genres</field>
-    <field name="res_model">music.genre</field>
-    <field name="view_mode">tree,form</field>
-    <field name="view_id" ref="view_music_genre_tree"/>
-</record>
-
+        <record id="music_genre_action" model="ir.actions.act_window">
+            <field name="name">Genres</field>
+            <field name="res_model">music.genre</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_music_genre_tree"/>
+        </record>
+    </data>
 </odoo>
