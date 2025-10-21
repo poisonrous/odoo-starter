@@ -34,3 +34,7 @@ class Media(models.Model):
                 record.status = 'new'
             else:
                 record.status = 'released'
+
+    def _recompute_status_all(self):
+        records = self.search([])
+        records._compute_status()

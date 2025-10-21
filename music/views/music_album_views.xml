@@ -4,8 +4,8 @@
 <record id="action_album_ids" model="ir.actions.act_window">
     <field name="name">Albums</field>
     <field name="res_model">music.album</field>
-    <field name="view_mode">tree,form</field>
-    <field name="domain">[('artist_id', '=', active_id)]</field>
+    <field name="view_mode">tree</field>
+    <field name="domain">[('artist_id', '=', context.get('artist_id'))]</field>
 </record>
 
 <record id="view_music_album_search" model="ir.ui.view">
@@ -52,7 +52,7 @@
             </header>
             <sheet>
                 <div class="o-form-buttonbox oe_button_box position-relative text-end o_full" position="inside">
-                    <button name="%(action_album_ids)d" type="action" class="oe_stat_button" icon="fa-music">
+                    <button name="%(action_album_ids)d" type="action" class="oe_stat_button" icon="fa-music" context="{'artist_id': artist_id}">
                             <field name="artist_album_count" widget="statinfo" string="Albums" class="o_field_widget o_stat_info"/>
                     </button>
                 </div>

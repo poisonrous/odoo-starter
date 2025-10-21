@@ -9,5 +9,6 @@
     'depends': ['base', 'web'],
         'data': [
         'views/media_genre_views.xml',
+        'data/cron.xml'
     ]
 }

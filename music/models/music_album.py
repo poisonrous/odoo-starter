@@ -20,7 +20,6 @@ class MusicAlbum(models.Model):
     artist_album_count = fields.Integer(
         related='artist_id.album_count',
         string='Artist Album Count',
-        store=True,
         readonly=True
     )
 
