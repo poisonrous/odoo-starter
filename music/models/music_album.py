@@ -53,3 +53,6 @@ class MusicAlbum(models.Model):
     @api.onchange('artist_id')
     def _onchange_artist(self):
         self.genre_id=(self.artist_id.genre_id)
+
+    def action_add(self):
+        self._compute_status()

@@ -47,6 +47,7 @@
     <field name="arch" type="xml">
         <form>
             <header>
+                <button name="action_add" type="object" string="Add to Inventory" attrs="{'invisible': [('status', '==', 'coming')]}"/>
                 <!--<button name="action_listened" type="object" string="Listened" attrs="{'invisible': [('status', '!=', 'new')]}"/>-->
                 <field name="status" widget="statusbar"  options="{'clickable':0}"/>
             </header>
