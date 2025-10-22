@@ -4,9 +4,12 @@ class MusicArtist(models.Model):
     _name = 'music.artist'
     _description = 'Artist'
 
-    name = fields.Char(
-        string='Name',
-        required=True
+    partner_id = fields.Many2one(
+        'res.partner',
+        string='Contact',
+        delegate=True,
+        required=True,
+        ondelete='restrict'
     )
 
     genre_id = fields.Many2one(
@@ -31,3 +34,18 @@ class MusicArtist(models.Model):
     def _compute_count(self):
         for record in self:
             record.album_count = len(record.album_ids)
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    album_ids = fields.One2many(
+        'music.album',
+        compute='_compute_album_ids',
+        string='Albums',
+        store=False
+    )
+
+    def _compute_album_ids(self):
+        for partner in self:
+            artist = self.env['music.artist'].search([('partner_id', '=', partner.id)], limit=1)
+            partner.album_ids = artist.album_ids if artist else False

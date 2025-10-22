@@ -38,6 +38,25 @@
     </field>
 </record>
 
+<record id="inherited_artist_view_form" model="ir.ui.view">
+    <field name="name">inherited.artist.form</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//page[@name='contact_addresses']" position="before">
+            <page string="Albums">
+                <field name="album_ids">
+                    <tree>
+                        <field name="name"/>
+                        <field name="genre_id"/>
+                        <field name="release_date"/>
+                    </tree>
+                </field>
+            </page>
+        </xpath>
+    </field>
+</record>
+
 <record id="music_artist_action" model="ir.actions.act_window">
     <field name="name">Artists</field>
     <field name="res_model">music.artist</field>
