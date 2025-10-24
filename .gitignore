@@ -1,6 +1,7 @@
 odoo.log
 *.pyc
 __pycache__/
+*__pycache__/
 *.swp
 *.bak
 *.idea/

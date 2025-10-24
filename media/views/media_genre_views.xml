@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
+    <data>
 
-<record id="view_media_genre_tree" model="ir.ui.view">
+        <record id="view_media_genre_tree" model="ir.ui.view">
     <field name="name">media.genre.tree</field>
     <field name="model">media.genre</field>
     <field name="arch" type="xml">
@@ -31,5 +32,7 @@
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="view_media_genre_tree"/>
 </record>
+
+    </data>
 
 </odoo>
