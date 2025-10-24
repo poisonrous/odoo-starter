@@ -26,6 +26,36 @@
     </field>
 </record>
 
+<record id="music_album_kanban_view" model="ir.ui.view">
+    <field name="name">music.album.kanban</field>
+    <field name="model">music.album</field>
+    <field name="arch" type="xml">
+        <kanban default_group_by="artist_id" records_draggable="false">
+            <field name="status"/>
+            <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_global_click">
+                        <div>
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+                        </div>
+                        <div>
+                                <field name="length" widget="float_time"/>
+                        </div>
+                        <div>
+                            <field name="artist_id"/>
+                        </div>
+                        <div t-if="record.status.raw_value == 'new'" class="alert-success mt-2 p-1 text-center">
+                            New!
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+</record>
+
 <record id="view_music_album_tree" model="ir.ui.view">
     <field name="name">music.album.tree</field>
     <field name="model">music.album</field>
@@ -78,10 +108,11 @@
     </field>
 </record>
 
+
 <record id="music_album_action" model="ir.actions.act_window">
     <field name="name">Albums</field>
     <field name="res_model">music.album</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">kanban,tree,form</field>
     <field name="view_id" ref="view_music_album_tree"/>
     <field name="context">{'search_default_new': True}</field>
 </record>
