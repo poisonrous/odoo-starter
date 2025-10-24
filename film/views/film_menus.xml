@@ -1,11 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-<menuitem id="film_menu_root" name="Film">
-    <menuitem id="film_library_menu" name="Library">
-        <menuitem id="film_menu_action" action="film_action"/>
-    </menuitem>
-    <menuitem id="film_items_menu" name="Items">
-        <menuitem id="film_genre_menu_action" action="film_genre_action"/>
-    </menuitem>
-</menuitem>
+    <menuitem id="film_menu_root" name="Film"/>
+    
+    <menuitem id="film_library_menu" name="Library" parent="film_menu_root"/>
+    <menuitem id="film_menu_action" action="film_action" parent="film_library_menu"/>
+    
+    <menuitem id="film_items_menu" name="Items" parent="film_menu_root"/>
+    <menuitem id="film_genre_menu_action" action="film_genre_action" parent="film_items_menu"/>
 </odoo>

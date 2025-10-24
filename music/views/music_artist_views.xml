@@ -1,67 +1,67 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-<record id="view_music_artist_search" model="ir.ui.view">
-    <field name="name">music.artist.search</field>
-    <field name="model">music.artist</field>
-    <field name="arch" type="xml">
-        <search string="Artists">
-            <group expand="0" string="Group By">
-                <filter name="genre" context="{'group_by':'genre_id'}"/>
-            </group>
-        </search>
-    </field>
-</record>
-
-<record id="view_music_artist_tree" model="ir.ui.view">
-    <field name="name">music.artist.tree</field>
-    <field name="model">music.artist</field>
-    <field name="arch" type="xml">
-        <tree>
-            <field name="name"/>
-        </tree>
-    </field>
-</record>
-
-<record id="view_music_artist_form" model="ir.ui.view">
-    <field name="name">music.artist.form</field>
-    <field name="model">music.artist</field>
-    <field name="arch" type="xml">
-        <form>
-            <sheet>
-                <group>
-                    <field name="name"/>
-                    <field name="genre_id"/>
+    <record id="view_music_artist_search" model="ir.ui.view">
+        <field name="name">music.artist.search</field>
+        <field name="model">music.artist</field>
+        <field name="arch" type="xml">
+            <search string="Artists">
+                <group expand="0" string="Group By">
+                    <filter name="genre" context="{'group_by': 'genre_id'}"/>
                 </group>
-            </sheet>
-        </form>
-    </field>
-</record>
+            </search>
+        </field>
+    </record>
 
-<record id="inherited_artist_view_form" model="ir.ui.view">
-    <field name="name">inherited.artist.form</field>
-    <field name="model">res.partner</field>
-    <field name="inherit_id" ref="base.view_partner_form"/>
-    <field name="arch" type="xml">
-        <xpath expr="//page[@name='contact_addresses']" position="before">
-            <page string="Albums">
-                <field name="album_ids">
-                    <tree>
+    <record id="view_music_artist_tree" model="ir.ui.view">
+        <field name="name">music.artist.tree</field>
+        <field name="model">music.artist</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_music_artist_form" model="ir.ui.view">
+        <field name="name">music.artist.form</field>
+        <field name="model">music.artist</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
                         <field name="name"/>
                         <field name="genre_id"/>
-                        <field name="release_date"/>
-                    </tree>
-                </field>
-            </page>
-        </xpath>
-    </field>
-</record>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
 
-<record id="music_artist_action" model="ir.actions.act_window">
-    <field name="name">Artists</field>
-    <field name="res_model">music.artist</field>
-    <field name="view_mode">tree,form</field>
-    <field name="view_id" ref="view_music_artist_tree"/>
-</record>
+    <record id="inherited_artist_view_form" model="ir.ui.view">
+        <field name="name">inherited.artist.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='contact_addresses']" position="before">
+                <page string="Albums">
+                    <field name="album_ids">
+                        <tree>
+                            <field name="name"/>
+                            <field name="genre_id"/>
+                            <field name="release_date"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="music_artist_action" model="ir.actions.act_window">
+        <field name="name">Artists</field>
+        <field name="res_model">music.artist</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_music_artist_tree"/>
+    </record>
 
 </odoo>

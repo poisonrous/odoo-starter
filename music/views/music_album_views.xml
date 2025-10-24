@@ -1,120 +1,118 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-<record id="action_album_ids" model="ir.actions.act_window">
-    <field name="name">Albums</field>
-    <field name="res_model">music.album</field>
-    <field name="view_mode">tree</field>
-    <field name="domain">[('artist_id', '=', context.get('artist_id'))]</field>
-</record>
+    <record id="action_album_ids" model="ir.actions.act_window">
+        <field name="name">Albums</field>
+        <field name="res_model">music.album</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[('artist_id', '=', context_artist_id)]</field>
+    </record>
 
-<record id="view_music_album_search" model="ir.ui.view">
-    <field name="name">music.album.search</field>
-    <field name="model">music.album</field>
-    <field name="arch" type="xml">
-        <search string="Albums">
-            <field name="name"/>
-            <field name="artist_id"/>
-            <group expand="0" string="Extended Filters">
-                <filter string="New" name="new" domain="[('status','=', 'new')]"/>
-            </group>
-            <group expand="1" string="Group By">
-                <filter name="genre_id" context="{'group_by':'genre_id'}"/>
-                <filter name="artist_id" context="{'group_by':'artist_id'}"/>
-            </group>
-        </search>
-    </field>
-</record>
-
-<record id="music_album_kanban_view" model="ir.ui.view">
-    <field name="name">music.album.kanban</field>
-    <field name="model">music.album</field>
-    <field name="arch" type="xml">
-        <kanban default_group_by="artist_id" records_draggable="false">
-            <field name="status"/>
-            <templates>
-                <t t-name="kanban-box">
-                    <div class="oe_kanban_global_click">
-                        <div>
-                            <strong>
-                                <field name="name"/>
-                            </strong>
-                        </div>
-                        <div>
-                                <field name="length" widget="float_time"/>
-                        </div>
-                        <div>
-                            <field name="artist_id"/>
-                        </div>
-                        <div t-if="record.status.raw_value == 'new'" class="alert-success mt-2 p-1 text-center">
-                            New!
-                        </div>
-                    </div>
-                </t>
-            </templates>
-        </kanban>
-    </field>
-</record>
-
-<record id="view_music_album_tree" model="ir.ui.view">
-    <field name="name">music.album.tree</field>
-    <field name="model">music.album</field>
-    <field name="arch" type="xml">
-        <tree decoration-success="status=='new'" decoration-muted="status=='coming'" decoration-bf="status=='listened'">
-            <field name="name"/>
-            <field name="artist_id"/>
-            <field name="genre_id" options="{'no_create':1}" />
-            <field name="release_date"/>
-            <field name="length" widget="float_time" optional="hide"/>
-            <field name="status" optional="hide"/>
-        </tree>
-    </field>
-</record>
-
-<record id="view_music_album_form" model="ir.ui.view">
-    <field name="name">music.album.form</field>
-    <field name="model">music.album</field>
-    <field name="arch" type="xml">
-        <form>
-            <header>
-                <button name="action_add" type="object" string="Add to Inventory" attrs="{'invisible': [('status', '==', 'coming')]}"/>
-                <!--<button name="action_listened" type="object" string="Listened" attrs="{'invisible': [('status', '!=', 'new')]}"/>-->
-                <field name="status" widget="statusbar"  options="{'clickable':0}"/>
-            </header>
-            <sheet>
-                <div class="o-form-buttonbox oe_button_box position-relative text-end o_full" position="inside">
-                    <button name="%(action_album_ids)d" type="action" class="oe_stat_button" icon="fa-music" context="{'artist_id': artist_id}">
-                            <field name="artist_album_count" widget="statinfo" string="Albums" class="o_field_widget o_stat_info"/>
-                    </button>
-                </div>
-                <group>
-                    <field name="name"/>
-                    <field name="artist_id"/>
-                    <field name="genre_id"/>
-                    <field name="release_date"/>
-                    <field name="length" widget="float_time" readonly="1"/>
+    <record id="view_music_album_search" model="ir.ui.view">
+        <field name="name">music.album.search</field>
+        <field name="model">music.album</field>
+        <field name="arch" type="xml">
+            <search string="Albums">
+                <field name="name"/>
+                <field name="artist_id"/>
+                <group expand="0" string="Extended Filters">
+                    <filter string="New" name="new" domain="[('status','=', 'new')]"/>
                 </group>
-                <notebook>
-                  <page string="Tracks">
-                    <field name="track_link_ids">
-                        <tree editable="bottom">
-                            <field name="track_id"/>
-                        </tree>
-                    </field>
-                  </page>
-                </notebook>
-            </sheet>
-        </form>
-    </field>
-</record>
+                <group expand="1" string="Group By">
+                    <filter name="genre_id" context="{'group_by':'genre_id'}"/>
+                    <filter name="artist_id" context="{'group_by':'artist_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
 
+    <record id="music_album_kanban_view" model="ir.ui.view">
+        <field name="name">music.album.kanban</field>
+        <field name="model">music.album</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="artist_id" records_draggable="false">
+                <field name="status"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div>
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                            <div>
+                                <field name="length" widget="float_time"/>
+                            </div>
+                            <div>
+                                <field name="artist_id"/>
+                            </div>
+                            <div t-if="record.status.raw_value == 'new'" class="alert-success mt-2 p-1 text-center">
+                                New!
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
 
-<record id="music_album_action" model="ir.actions.act_window">
-    <field name="name">Albums</field>
-    <field name="res_model">music.album</field>
-    <field name="view_mode">kanban,tree,form</field>
-    <field name="view_id" ref="view_music_album_tree"/>
-    <field name="context">{'search_default_new': True}</field>
-</record>
+    <record id="view_music_album_tree" model="ir.ui.view">
+        <field name="name">music.album.tree</field>
+        <field name="model">music.album</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="status=='new'" decoration-muted="status=='coming'" decoration-bf="status=='listened'">
+                <field name="name"/>
+                <field name="artist_id"/>
+                <field name="genre_id" options="{'no_create':1}" />
+                <field name="release_date"/>
+                <field name="length" widget="float_time" optional="hide"/>
+                <field name="status" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_music_album_form" model="ir.ui.view">
+        <field name="name">music.album.form</field>
+        <field name="model">music.album</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_add" type="object" string="Add to Inventory" invisible="status == 'coming'"/>
+                    <field name="status" widget="statusbar" options="{'clickable':0}"/>
+                </header>
+                <sheet>
+                    <div class="o-form-buttonbox oe_button_box position-relative text-end o_full" position="inside">
+                        <button name="%(action_album_ids)d" type="action" class="oe_stat_button" icon="fa-music" context="{'artist_id': artist_id}">
+                            <field name="artist_album_count" widget="statinfo" string="Albums" class="o_field_widget o_stat_info"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="artist_id"/>
+                        <field name="genre_id"/>
+                        <field name="release_date"/>
+                        <field name="length" widget="float_time" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Tracks">
+                            <field name="track_link_ids">
+                                <tree editable="bottom">
+                                    <field name="track_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="music_album_action" model="ir.actions.act_window">
+        <field name="name">Albums</field>
+        <field name="res_model">music.album</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_music_album_tree"/>
+        <field name="context">{'search_default_new': True}</field>
+    </record>
 
 </odoo>

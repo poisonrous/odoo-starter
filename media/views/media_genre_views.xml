@@ -1,38 +1,37 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
 
         <record id="view_media_genre_tree" model="ir.ui.view">
-    <field name="name">media.genre.tree</field>
-    <field name="model">media.genre</field>
-    <field name="arch" type="xml">
-        <tree editable="bottom">
-            <field name="name"/>
-        </tree>
-    </field>
-</record>
-
-<record id="view_media_genre_form" model="ir.ui.view">
-    <field name="name">media.genre.form</field>
-    <field name="model">media.genre</field>
-    <field name="arch" type="xml">
-        <form>
-            <sheet>
-                <group>
+            <field name="name">media.genre.tree</field>
+            <field name="model">media.genre</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
                     <field name="name"/>
-                </group>
-            </sheet>
-        </form>
-    </field>
-</record>
+                </tree>
+            </field>
+        </record>
 
-<record id="media_genre_action" model="ir.actions.act_window">
-    <field name="name">Genres</field>
-    <field name="res_model">media.genre</field>
-    <field name="view_mode">tree,form</field>
-    <field name="view_id" ref="view_media_genre_tree"/>
-</record>
+        <record id="view_media_genre_form" model="ir.ui.view">
+            <field name="name">media.genre.form</field>
+            <field name="model">media.genre</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="media_genre_action" model="ir.actions.act_window">
+            <field name="name">Genres</field>
+            <field name="res_model">media.genre</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_media_genre_tree"/>
+        </record>
 
     </data>
-
 </odoo>

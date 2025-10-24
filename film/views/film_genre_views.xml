@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
         <record id="view_film_genre_tree" model="ir.ui.view">
@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="media.view_media_genre_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
-                    <attribute name="string">film Genres</attribute>
+                    <attribute name="string">Film Genres</attribute>
                 </xpath>
             </field>
         </record>
@@ -18,7 +18,7 @@
             <field name="inherit_id" ref="media.view_media_genre_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//form" position="attributes">
-                    <attribute name="string">film Genres</attribute>
+                    <attribute name="string">Film Genres</attribute>
                 </xpath>
             </field>
         </record>
