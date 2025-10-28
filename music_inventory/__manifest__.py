@@ -6,5 +6,8 @@
     'description': '',
     'installable': True,
     'application': False,
-    'depends': ['music', 'stock']
+    'depends': ['music', 'stock'],
+    'data': [
+        'views/product_template_inherited_views.xml'
+    ]
 }
